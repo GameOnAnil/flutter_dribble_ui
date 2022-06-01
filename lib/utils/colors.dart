@@ -25,6 +25,12 @@ class MyColors {
     const Color(0xff0E123E),
   ];
 
+  static List<Color> gradientSportsColor = [
+    const Color.fromARGB(255, 218, 230, 140).withOpacity(.5),
+    // const Color.fromARGB(255, 65, 66, 59),
+    const Color(0xff0E123E),
+  ];
+
   static Color sportsButtonColor = const Color(0xff282D29);
   static Color sportsButtonColorLight =
       const Color.fromARGB(255, 100, 100, 100);

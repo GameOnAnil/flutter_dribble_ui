@@ -1,10 +1,12 @@
-import 'package:dribble_ui_practice/design_three/sports_home_page.dart';
 import 'package:dribble_ui_practice/design_three/sports_third_page.dart';
+import 'package:dribble_ui_practice/design_three/widgets/sports_arrow_button.dart';
+import 'package:dribble_ui_practice/design_three/widgets/sports_dot_button.dart';
 import 'package:dribble_ui_practice/design_three/widgets/sports_horizontal_tile.dart';
 import 'package:dribble_ui_practice/design_three/widgets/time_card.dart';
 import 'package:dribble_ui_practice/models/sports_activity_model.dart';
 import 'package:dribble_ui_practice/models/time_model.dart';
 import 'package:dribble_ui_practice/utils/colors.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class SportsSecond extends StatelessWidget {
@@ -23,12 +25,8 @@ class SportsSecond extends StatelessWidget {
               children: [
                 appBar(context),
                 header(),
-                Container(
-                  width: double.infinity,
-                  height: 250,
-                  color: Colors.white,
-                ),
-                timeListView(),
+                buildGraph(),
+                const TimeListView(),
                 const Padding(
                   padding: EdgeInsets.only(left: 15.0),
                   child: Text(
@@ -48,6 +46,98 @@ class SportsSecond extends StatelessWidget {
     );
   }
 
+  Widget buildGraph() {
+    return SizedBox(
+      width: double.infinity,
+      height: 250,
+      child: Stack(
+        children: [
+          LineChart(
+            LineChartData(
+              minX: 0,
+              maxX: 15,
+              minY: 0,
+              maxY: 6,
+              borderData: FlBorderData(show: false),
+              titlesData: FlTitlesData(show: false),
+              gridData: FlGridData(show: false),
+              lineBarsData: [
+                LineChartBarData(
+                  spots: [
+                    const FlSpot(0, 3),
+                    const FlSpot(1.7, 2),
+                    const FlSpot(2.6, 2.7),
+                    const FlSpot(4, 2),
+                    const FlSpot(5.4, 3.8),
+                    const FlSpot(7.5, 1),
+                    const FlSpot(10, 6),
+                    const FlSpot(13.5, 3.5),
+                    const FlSpot(15, 4.5),
+                  ],
+                  dotData: FlDotData(
+                    show: true,
+                    checkToShowDot: (spot, bardata) {
+                      if (spot == const FlSpot(4.9, 5)) {
+                        return true;
+                      }
+                      return false;
+                    },
+                    getDotPainter: (spot, percent, barData, index) {
+                      return FlDotCirclePainter(
+                          radius: 7,
+                          color: MyColors.sportsNeonButton,
+                          strokeColor: Colors.white,
+                          strokeWidth: 3);
+                    },
+                  ),
+                  isCurved: true,
+                  barWidth: 2,
+                  color: MyColors.sportsNeonBright,
+                  belowBarData: BarAreaData(
+                      show: true,
+                      color: MyColors.sportsNeonButton.withOpacity(.1)),
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            right: 20,
+            top: 0,
+            bottom: 0,
+            child: verticalLineWithDot(),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget verticalLineWithDot() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Container(
+            width: 8,
+            height: 8,
+            color: Colors.white.withOpacity(.9),
+          ),
+          Expanded(
+            child: Container(
+              width: 2,
+              height: double.infinity,
+              color: Colors.white.withOpacity(.7),
+            ),
+          ),
+          Container(
+            width: 8,
+            height: 8,
+            color: Colors.white.withOpacity(.9),
+          ),
+        ],
+      ),
+    );
+  }
+
   SizedBox activityListView() {
     return SizedBox(
       height: 600,
@@ -59,23 +149,6 @@ class SportsSecond extends StatelessWidget {
               currentItem: currentModel,
             );
           })),
-    );
-  }
-
-  SizedBox timeListView() {
-    return SizedBox(
-      width: double.infinity,
-      height: 100,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: TimeModel.timeList.length,
-        itemBuilder: ((context, index) {
-          final currentTime = TimeModel.timeList[index];
-          return TimeCard(
-            timeModel: currentTime,
-          );
-        }),
-      ),
     );
   }
 
@@ -163,6 +236,66 @@ class SportsSecond extends StatelessWidget {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class TimeListView extends StatefulWidget {
+  const TimeListView({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<TimeListView> createState() => _TimeListViewState();
+}
+
+class _TimeListViewState extends State<TimeListView> {
+  void selectItem(int position, bool isSelected) {
+    setState(() {
+      final currentTime = timeList[position];
+
+      final newList = timeList.map((time) {
+        if (time == currentTime) {
+          return TimeModel(time: currentTime.time, isSelected: isSelected);
+        }
+        return TimeModel(time: time.time, isSelected: false);
+      }).toList();
+      timeList = newList;
+    });
+  }
+
+  List<TimeModel> timeList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    List<TimeModel> timeList2 = [
+      TimeModel(time: "05:00", isSelected: false),
+      TimeModel(time: "06:00", isSelected: true),
+      TimeModel(time: "07:00", isSelected: false),
+      TimeModel(time: "08:00", isSelected: false),
+      TimeModel(time: "09:00", isSelected: false),
+    ];
+    timeList = timeList2;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 100,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: timeList.length,
+        itemBuilder: ((context, index) {
+          final currentTime = timeList[index];
+          return TimeCard(
+            index: index,
+            timeModel: currentTime,
+            isSelected: () => selectItem(index, !currentTime.isSelected),
+          );
+        }),
       ),
     );
   }

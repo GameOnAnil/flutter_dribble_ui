@@ -1,4 +1,8 @@
 import 'package:dribble_ui_practice/design_three/sports_second.dart';
+import 'package:dribble_ui_practice/design_three/widgets/animated_button.dart';
+import 'package:dribble_ui_practice/design_three/widgets/finger_print_btn.dart';
+import 'package:dribble_ui_practice/design_three/widgets/sports_arrow_button.dart';
+import 'package:dribble_ui_practice/design_three/widgets/sports_dot_button.dart';
 import 'package:dribble_ui_practice/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +35,10 @@ class SportHomePage extends StatelessWidget {
                   height: 20,
                 ),
                 textHeader(),
-                roundButtonPart(context),
+                // roundButtonPart(context),
+                AnimatedRoundButton(
+                  parentContext: context,
+                ),
                 buttomTextColumn(),
                 const SizedBox(
                   height: 10,
@@ -185,40 +192,6 @@ class SportHomePage extends StatelessWidget {
   }
 }
 
-class FingerPrintButton extends StatelessWidget {
-  const FingerPrintButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Container(
-        height: 100,
-        width: 80,
-        decoration: BoxDecoration(
-          border: Border.all(color: MyColors.sportsNeonButton, width: 2),
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(7.0),
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-                color: MyColors.sportsButtonColorLight),
-            child: const Icon(
-              Icons.fingerprint,
-              size: 40,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class BackgroundPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -257,63 +230,5 @@ class BackgroundPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return oldDelegate != this;
-  }
-}
-
-class SportsArrowButton extends StatelessWidget {
-  final Function onTap;
-  const SportsArrowButton({
-    Key? key,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 60,
-        height: 60,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: MyColors.sportsButtonColor,
-        ),
-        child: IconButton(
-          onPressed: () {
-            onTap();
-          },
-          icon: const Icon(Icons.arrow_back),
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
-
-class SportsDotButton extends StatelessWidget {
-  final Function onTap;
-  const SportsDotButton({
-    Key? key,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 60,
-        height: 60,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: MyColors.sportsButtonColor,
-        ),
-        child: IconButton(
-          onPressed: () {
-            onTap();
-          },
-          icon: const Icon(Icons.donut_small),
-          color: Colors.white,
-        ),
-      ),
-    );
   }
 }
