@@ -1,6 +1,6 @@
 import 'package:dribble_ui_practice/design_three/sports_third_page.dart';
 import 'package:dribble_ui_practice/design_three/widgets/sports_arrow_button.dart';
-import 'package:dribble_ui_practice/design_three/widgets/sports_dot_button.dart';
+import 'package:dribble_ui_practice/design_three/widgets/sports_button_with_icon.dart';
 import 'package:dribble_ui_practice/design_three/widgets/sports_horizontal_tile.dart';
 import 'package:dribble_ui_practice/design_three/widgets/time_card.dart';
 import 'package:dribble_ui_practice/models/sports_activity_model.dart';
@@ -227,13 +227,20 @@ class SportsSecond extends StatelessWidget {
               Navigator.pop(context);
             },
           ),
-          SportsDotButton(
+          GestureDetector(
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: ((context) => const SportsThirdPage())));
             },
+            child: SportsButtonWithIcon(
+              color: MyColors.sportsButtonColor,
+              icon: const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
       ),

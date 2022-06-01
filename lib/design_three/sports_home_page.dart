@@ -30,7 +30,7 @@ class SportHomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                appBar(),
+                appBar(context),
                 const SizedBox(
                   height: 20,
                 ),
@@ -174,14 +174,16 @@ class SportHomePage extends StatelessWidget {
     );
   }
 
-  Padding appBar() {
+  Padding appBar(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 25),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SportsArrowButton(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
           SportsDotButton(
             onTap: () {},

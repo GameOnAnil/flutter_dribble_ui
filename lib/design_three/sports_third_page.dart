@@ -12,30 +12,29 @@ class SportsThirdPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: double.infinity,
+        height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(
-                    "https://www.verywellfit.com/thmb/R7M0FlXHQI7EArWaKgRbg6MnGIs=/2002x2002/smart/filters:no_upscale()/cardiovascular-endurance-59f7fc2faad52b00100156aa.jpg"),
-                fit: BoxFit.cover)),
+                image: AssetImage("assets/running.jpg"), fit: BoxFit.cover)),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildHeader(context),
-                bloodPressureTile(),
-                const SizedBox(
-                  height: 10,
-                ),
-                statsPart(),
-                const SizedBox(
-                  height: 10,
-                ),
-                Expanded(
-                  child: runningDistance(),
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildHeader(context),
+                  bloodPressureTile(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  statsPart(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  runningDistance(),
+                ],
+              ),
             ),
           ),
         ),
@@ -44,95 +43,102 @@ class SportsThirdPage extends StatelessWidget {
   }
 
   Widget runningDistance() {
-    return Stack(
-      children: [
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.black.withOpacity(.5),
-            ),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "3.24",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 40,
-                            ),
-                          ),
-                          Text(
-                            "km",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20,
-                            ),
-                          )
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            "Running",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                            ),
-                          ),
-                          Text(
-                            "Distance",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+    return SizedBox(
+      height: 200,
+      width: double.infinity,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(25),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(.4),
                 ),
-              ],
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "3.24",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 40,
+                                ),
+                              ),
+                              Text(
+                                "km",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
+                                ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                "Running",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              Text(
+                                "Distance",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-        Positioned(
-          right: 0,
-          child: SizedBox(
-            width: 250,
-            height: 200,
-            child: CustomPaint(
-              foregroundPainter: MyCustomPaint(),
+          Positioned(
+            right: 0,
+            child: SizedBox(
+              width: 250,
+              height: 200,
+              child: CustomPaint(
+                foregroundPainter: MyCustomPaint(),
+              ),
             ),
           ),
-        ),
-        const Positioned(
-          right: 110,
-          bottom: 10,
-          child: DotSportsContainer(),
-        ),
-        const Positioned(
-          right: 90,
-          bottom: 105,
-          child: DotSportsContainer(),
-        ),
-      ],
+          const Positioned(
+            right: 110,
+            bottom: 10,
+            child: DotSportsContainer(),
+          ),
+          const Positioned(
+            right: 90,
+            bottom: 105,
+            child: DotSportsContainer(),
+          ),
+        ],
+      ),
     );
   }
 
@@ -153,7 +159,7 @@ class SportsThirdPage extends StatelessWidget {
             width: 10,
           ),
           statsContainer(
-              color: Colors.black.withOpacity(.6),
+              color: Colors.black.withOpacity(.5),
               t1: "176",
               t2: "bests/min",
               t3: "Heartbeat",
@@ -362,22 +368,22 @@ class SportsThirdPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
+                children: const [
+                  Text(
                     "Running",
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 18),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 5,
                   ),
                   Text(
                     "05:30 PM - 06:38 PM",
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        color: Colors.black.withOpacity(.5),
+                        color: Colors.white,
                         fontSize: 12),
                   ),
                 ],
