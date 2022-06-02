@@ -26,7 +26,7 @@ class _AnimatedRoundButtonState extends State<AnimatedRoundButton>
 
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(seconds: 1),
     );
 
     curvedAnimation =
