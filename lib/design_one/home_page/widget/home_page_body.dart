@@ -17,37 +17,37 @@ class HomePageBody extends StatelessWidget {
           crossAxisCount: 2,
           children: [
             GridCustomTile(
-              image: "assets/lightbulb.png",
+              image: "assets/images/lightbulb.png",
               color: MyColors.blueColor,
               textColor: MyColors.blueColorDark,
               title: "New Idea",
             ),
             GridCustomTile(
-              image: "assets/music.png",
+              image: "assets/images/music.png",
               color: MyColors.greenColor,
               textColor: MyColors.greenColorDark,
               title: "Music",
             ),
             GridCustomTile(
-              image: "assets/monitor.png",
+              image: "assets/images/monitor.png",
               color: MyColors.yellowColor,
               textColor: MyColors.yellowColorDark,
               title: "Programming",
             ),
             GridCustomTile(
-              image: "assets/bake.png",
+              image: "assets/images/bake.png",
               color: MyColors.purpleColor,
               textColor: MyColors.purpleColorDark,
               title: "Cooking",
             ),
             GridCustomTile(
-              image: "assets/airplane.png",
+              image: "assets/images/airplane.png",
               color: MyColors.orangeColor,
               textColor: MyColors.orangeColorDark,
               title: "Cooking",
             ),
             GridCustomTile(
-              image: "assets/atom-symbol.png",
+              image: "assets/images/atom-symbol.png",
               color: MyColors.blueColor,
               textColor: MyColors.blueColorDark,
               title: "Cooking",

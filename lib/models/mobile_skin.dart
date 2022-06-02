@@ -8,7 +8,7 @@ class MobileSkin {
 }
 
 List<MobileSkin> mobileList = [
-  MobileSkin(url: "assets/design1.png", route: "/food"),
-  MobileSkin(url: "assets/design2.png", route: "/bank"),
-  MobileSkin(url: "assets/design3.png", route: "/sports"),
+  MobileSkin(url: "assets/images/design1.png", route: "/food"),
+  MobileSkin(url: "assets/images/design2.png", route: "/bank"),
+  MobileSkin(url: "assets/images/design3.png", route: "/sports"),
 ];

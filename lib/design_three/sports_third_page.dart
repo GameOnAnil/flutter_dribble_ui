@@ -15,7 +15,8 @@ class SportsThirdPage extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/running.jpg"), fit: BoxFit.cover)),
+                image: AssetImage("assets/images/running.jpg"),
+                fit: BoxFit.cover)),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -356,7 +357,7 @@ class SportsThirdPage extends StatelessWidget {
                     color: MyColors.sportsNeonBright),
                 child: Center(
                   child: Image.asset(
-                    "assets/sneakers.png",
+                    "assets/images/sneakers.png",
                     width: 35,
                     height: 35,
                   ),

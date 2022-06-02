@@ -46,19 +46,19 @@ class BankSecondPage extends StatelessWidget {
                     title: "Salary",
                     description: "Belong Interation",
                     price: "+\$2010",
-                    image: "assets/suitcase.png",
+                    image: "assets/images/suitcase.png",
                   ),
                   BankListTile(
                     title: "Paypal",
                     description: "Webtech",
                     price: "+\$12,000",
-                    image: "assets/paypal.png",
+                    image: "assets/images/paypal.png",
                   ),
                   BankListTile(
                     title: "Car Repair",
                     description: "Car Engine Repair",
                     price: "+\$233,000",
-                    image: "assets/wrench.png",
+                    image: "assets/images/wrench.png",
                   ),
                 ],
               ),
@@ -189,13 +189,13 @@ class SecondPageHeader extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset("assets/chip.png",
+                        Image.asset("assets/images/chip.png",
                             width: 35,
                             height: 35,
                             color: Colors.white,
                             fit: BoxFit.cover),
                         Image.asset(
-                          "assets/visa.png",
+                          "assets/images/visa.png",
                           width: 70,
                           height: 50,
                           color: Colors.white,
