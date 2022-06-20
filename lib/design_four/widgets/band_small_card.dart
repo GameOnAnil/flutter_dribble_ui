@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BandSmallCard extends StatelessWidget {
   final String image;
@@ -13,10 +14,10 @@ class BandSmallCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Center(
         child: Container(
-          height: 200,
-          width: 150,
+          height: 200.h,
+          width: 150.w,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
             image: DecorationImage(
                 image: AssetImage(
                   image,

@@ -1,5 +1,6 @@
 import 'package:dribble_ui_practice/design_four/widgets/band_small_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PositionedListView extends StatefulWidget {
   const PositionedListView({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _PositionedListViewState extends State<PositionedListView> {
       children: [
         TweenAnimationBuilder(
             duration: const Duration(milliseconds: 200),
-            tween: Tween<double>(begin: -70, end: 0),
+            tween: Tween<double>(begin: -70.h, end: 0),
             builder: (context, double value, child) {
               return AnimatedPositioned(
                 curve: Curves.decelerate,
@@ -33,7 +34,7 @@ class _PositionedListViewState extends State<PositionedListView> {
 
 SizedBox _listViewPart() {
   return SizedBox(
-    height: 250,
+    height: 250.h,
     width: double.infinity,
     child: ListView(
       scrollDirection: Axis.horizontal,

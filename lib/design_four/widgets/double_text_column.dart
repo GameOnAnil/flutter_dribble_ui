@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DoubleTextColumn extends StatelessWidget {
   final String text1;
@@ -17,14 +18,16 @@ class DoubleTextColumn extends StatelessWidget {
         Text(
           text1,
           style: TextStyle(
-              fontSize: 20,
+              fontSize: 20.sp,
               color: Colors.white.withOpacity(.9),
               fontWeight: FontWeight.w500),
         ),
         Text(
           text2,
-          style: const TextStyle(
-              fontSize: 22, color: Colors.white, fontWeight: FontWeight.w700),
+          style: TextStyle(
+              fontSize: 22.sp,
+              color: Colors.white,
+              fontWeight: FontWeight.w700),
         ),
       ],
     );
