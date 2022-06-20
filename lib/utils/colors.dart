@@ -37,4 +37,9 @@ class MyColors {
   static Color sportsNeonButton = const Color.fromARGB(255, 230, 255, 68);
   static Color sportsNeonBright = const Color.fromARGB(255, 231, 255, 78);
   static Color sportsNeonLight = const Color.fromRGBO(244, 255, 173, 1);
+
+  static Color backgroundColor1 = const Color.fromARGB(255, 119, 40, 208);
+  static Color backgroundColor2 = const Color.fromARGB(255, 37, 19, 57);
+  static Color backgroundColor3 = const Color.fromARGB(255, 119, 40, 208);
+  static Color purpleButton = const Color.fromARGB(255, 195, 143, 255);
 }

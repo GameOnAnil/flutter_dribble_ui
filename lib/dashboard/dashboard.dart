@@ -26,45 +26,53 @@ class _DashboardPageState extends State<DashboardPage> {
               color: Colors.black, fontSize: 25, fontWeight: FontWeight.w700),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [
+      bottomNavigationBar: _bottomNavBar(),
+      body: Column(
+        children: [
+          Expanded(
+            child: CarouselSlider.builder(
+              options: CarouselOptions(
+                height: MediaQuery.of(context).size.height,
+                viewportFraction: 0.8,
+                enableInfiniteScroll: true,
+                enlargeCenterPage: true,
+                enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                onPageChanged: (index, reason) => setState(
+                  () => activeIndex = index,
+                ),
+              ),
+              itemCount: mobileList.length,
+              itemBuilder: (context, index, renderIndex) {
+                final currentMobileSkin = mobileList[index];
+                return MobileSkinTile(
+                  url: currentMobileSkin.url,
+                  route: currentMobileSkin.route,
+                );
+              },
+            ),
+          ),
+          AnimatedSmoothIndicator(
+            activeIndex: activeIndex,
+            count: mobileList.length,
+            effect: const WormEffect(activeDotColor: Colors.deepPurple),
+          )
+        ],
+      ),
+    );
+  }
+
+  BottomNavigationBar _bottomNavBar() {
+    return BottomNavigationBar(
+      selectedItemColor: Colors.deepPurple,
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(
             Icons.home,
-            color: Colors.deepPurple,
           ),
           label: "Home",
         ),
         BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
-      ]),
-      body: Column(children: [
-        Expanded(
-          child: CarouselSlider.builder(
-            options: CarouselOptions(
-              height: MediaQuery.of(context).size.height,
-              viewportFraction: 0.8,
-              enableInfiniteScroll: true,
-              enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.scale,
-              onPageChanged: (index, reason) => setState(
-                () => activeIndex = index,
-              ),
-            ),
-            itemCount: mobileList.length,
-            itemBuilder: (context, index, renderIndex) {
-              final currentMobileSkin = mobileList[index];
-              return MobileSkinTile(
-                url: currentMobileSkin.url,
-                route: currentMobileSkin.route,
-              );
-            },
-          ),
-        ),
-        AnimatedSmoothIndicator(
-            activeIndex: activeIndex, count: mobileList.length,
-            )
-      ]),
-      // body: Container(
-      //     child: MobileSkinTile()),
+      ],
     );
   }
 }

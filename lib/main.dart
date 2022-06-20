@@ -1,4 +1,5 @@
 import 'package:dribble_ui_practice/circle_animation_page.dart';
+import 'package:dribble_ui_practice/design_four/design_four_home.dart';
 import 'package:dribble_ui_practice/design_one/home_page/home_page.dart';
 import 'package:dribble_ui_practice/design_three/sports_home_page.dart';
 import 'package:dribble_ui_practice/design_two/screens/bank_home_page.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           "/food": ((context) => const HomePage()),
           "/bank": ((context) => const BankHomePage()),
           "/sports": ((context) => const SportHomePage()),
+          "/d4": ((context) => const D4Home()),
           "/test": ((context) => const CircleAnimationPage()),
         },
         initialRoute: "/");
