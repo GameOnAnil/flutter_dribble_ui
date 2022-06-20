@@ -4,6 +4,7 @@ import 'package:dribble_ui_practice/design_four/widgets/double_text_column.dart'
 import 'package:dribble_ui_practice/design_four/widgets/positioned_list_view.dart';
 import 'package:dribble_ui_practice/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class D4DetailsPage extends StatefulWidget {
   final String headerImage;
@@ -33,7 +34,7 @@ class _D4DetailsPageState extends State<D4DetailsPage>
         CurvedAnimation(parent: _controller, curve: Curves.bounceOut);
 
     myTween = Tween<double>(begin: 0, end: 400).animate(_controller);
-    radiusTween = Tween<double>(begin: 500, end: 0).animate(_controller);
+    radiusTween = Tween<double>(begin: 500.r, end: 0).animate(_controller);
     animation = CurvedAnimation(
       parent: _controller,
       curve: Curves.easeOut,
@@ -80,9 +81,9 @@ class _D4DetailsPageState extends State<D4DetailsPage>
               child: PositionedListView(),
             ),
             _titleText("BTS"),
-            const SizedBox(
-              height: 130,
-              child: AnimatedBottomHeader(),
+            SizedBox(
+              height: 130.h,
+              child: const AnimatedBottomHeader(),
             ),
           ],
         ),
@@ -95,10 +96,10 @@ class _D4DetailsPageState extends State<D4DetailsPage>
       padding: const EdgeInsets.only(left: 8.0, right: 8),
       child: Container(
         width: double.infinity,
-        height: 90,
+        height: 90.h,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.white.withOpacity(.5), width: 2.5),
-            borderRadius: BorderRadius.circular(15)),
+            borderRadius: BorderRadius.circular(15.r)),
         child: SizedBox(
           height: double.infinity,
           width: double.infinity,
@@ -130,22 +131,22 @@ class _D4DetailsPageState extends State<D4DetailsPage>
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 4),
       child: Text(
         text,
-        style: const TextStyle(
-            color: Colors.white, fontSize: 28, fontWeight: FontWeight.w700),
+        style: TextStyle(
+            color: Colors.white, fontSize: 28.sp, fontWeight: FontWeight.w700),
       ),
     );
   }
 
   Widget _headerWidget2(String imageUrl) {
     return PreferredSize(
-      preferredSize: const Size(double.infinity, 200),
+      preferredSize: Size(double.infinity, 200.h),
       child: CircularRevealAnimation(
-        centerOffset: Offset(MediaQuery.of(context).size.width, 300),
+        centerOffset: Offset(MediaQuery.of(context).size.width, 300.h),
         animation: animation,
         child: SizedBox(
             child: Image.asset(
           imageUrl,
-          height: 300,
+          height: 300.h,
           width: double.infinity,
           fit: BoxFit.cover,
         )),

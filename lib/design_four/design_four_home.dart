@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dribble_ui_practice/design_four/widgets/bank_card.dart';
 import 'package:dribble_ui_practice/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class D4Home extends StatelessWidget {
   const D4Home({Key? key}) : super(key: key);
@@ -43,8 +44,8 @@ class D4Home extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(
-              height: 110,
+            SizedBox(
+              height: 110.h,
             ),
             buildHeader(),
             _chipList(context),
@@ -83,19 +84,21 @@ class D4Home extends StatelessWidget {
 
   Padding _musicianText() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
+        children: [
           Text(
             "Best Musician",
             style: TextStyle(
-                fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white),
+                fontSize: 24.sp,
+                fontWeight: FontWeight.w700,
+                color: Colors.white),
           ),
           Text(
             "See All",
             style: TextStyle(
-                fontSize: 18,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w700,
                 color: Colors.purple),
           )
@@ -106,7 +109,7 @@ class D4Home extends StatelessWidget {
 
   SizedBox _chipList(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: 80.h,
       width: MediaQuery.of(context).size.width,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -130,29 +133,29 @@ class D4Home extends StatelessWidget {
 
   Padding buildHeader() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0.r),
       child: Container(
-        height: 70,
+        height: 70.h,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(.3),
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(15.r),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: EdgeInsets.symmetric(horizontal: 15.0.w),
           child: Row(
             children: [
               Icon(
                 Icons.search,
-                size: 35,
+                size: 35.r,
                 color: Colors.white.withOpacity(.9),
               ),
-              const SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Text(
                 "Search by person",
                 style: TextStyle(
                     fontWeight: FontWeight.w400,
-                    fontSize: 15,
+                    fontSize: 15.sp,
                     color: Colors.white.withOpacity(.7)),
               )
             ],
@@ -178,17 +181,17 @@ class D4Chip extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: Center(
         child: Container(
-          width: 160,
-          height: 60,
+          width: 160.w,
+          height: 60.h,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(30.r),
             color: (isSelected) ? Colors.purple : Colors.white.withOpacity(.3),
           ),
           child: Center(
             child: Text(
               title,
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: 16.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
               ),
@@ -231,9 +234,9 @@ class _HomeNavBarState extends State<HomeNavBar>
         animation: _controller,
         builder: (context, child) {
           return ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.r),
             child: SizedBox(
-              height: 90,
+              height: 90.h,
               child: Stack(
                 children: [
                   Container(
